@@ -31,8 +31,7 @@ const CoinPerformance = ({ gainerList, loserList }) => {
                 {
                     gainerList.map(gainer => {
                         return(
-
-                            <Stack direction={'row'} py={2} justify={'space-between'}>
+                            <Stack direction={'row'} py={2} justify={'space-between'} key={gainer.symbol}>
                                 <Stack direction={'row'}>
                                     <Image
                                         boxSize='25px'
@@ -76,8 +75,7 @@ const CoinPerformance = ({ gainerList, loserList }) => {
                 {
                     loserList.map(gainer => {
                         return(
-
-                            <Stack direction={'row'} py={2} justify={'space-between'}>
+                            <Stack direction={'row'} py={2} justify={'space-between'} key={gainer.symbol}>
                                 <Stack direction={'row'}>
                                     <Image
                                         boxSize='25px'
@@ -103,7 +101,6 @@ const CoinPerformance = ({ gainerList, loserList }) => {
                 }
             </Box>
         </Stack>
-
     )
 }
 

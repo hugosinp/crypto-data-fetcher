@@ -1,4 +1,6 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+
 import {
     Table,
     Thead,
@@ -8,15 +10,21 @@ import {
     Td,
     Image,
     Stack,
-    Text
+    Text,
+    IconButton
 } from '@chakra-ui/react'
 
-const CoinTable = ({ coinList }) => {
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
+
+const CoinTable = ({ coinList, favoriteCoinList, setFavoriteCoin, removeFavoriteCoin }) => {
     
+    const dispatch = useDispatch();
+
     return (
         <Table variant='simple'>
             <Thead>
                 <Tr>
+                    <Th></Th>
                     <Th>Rank</Th>
                     <Th>Coin</Th>
                     <Th isNumeric>Price</Th>
@@ -29,6 +37,24 @@ const CoinTable = ({ coinList }) => {
                     coinList.map(coin => {
                         return(
                             <Tr key={coin.name}>
+
+                                <Td>
+                                    {
+                                        favoriteCoinList.find(favorite => favorite === coin.symbol) ?
+                                            <IconButton
+                                                fontSize='20px'
+                                                icon={<AiFillStar color='#ECC94B'/>}
+                                                onClick={() => {console.log("test"); dispatch(removeFavoriteCoin(coin.symbol))}}
+                                            />
+                                        : 
+                                            <IconButton
+                                                fontSize='20px'
+                                                icon={<AiOutlineStar />}
+                                                onClick={() => {console.log("test"); dispatch(setFavoriteCoin(coin.symbol))}}
+                                            />
+                                    }
+                                </Td>
+
                                 <Td>{coin.market_cap_rank}</Td>
                                 <Td> 
                                     <Stack direction={'row'}>

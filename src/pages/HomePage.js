@@ -16,12 +16,14 @@ import CoinPerformance from '../components/CoinPerformance'
 import ErrorMessage from '../components/ErrorMessage'
 
 import { getCoinList } from '../redux/actions/coinActions'
+import { getFavoriteCoinList, setFavoriteCoin, removeFavoriteCoin } from '../redux/actions/localStorageActions'
 
 const HomePage = () => {
     
     const dispatch = useDispatch();
 
     const coinListData = useSelector(state => state.coinListData);
+    const localStorageData = useSelector(state => state.localStorageData);
 
     const {
         loading,
@@ -32,8 +34,13 @@ const HomePage = () => {
         error
     } = coinListData;
 
+    const {
+        favoriteCoinList
+    } = localStorageData;
+
     useEffect(() => {
         dispatch(getCoinList());
+        dispatch(getFavoriteCoinList());
     }, [dispatch])
 
     return (
@@ -58,7 +65,7 @@ const HomePage = () => {
                         error={error}
                     />
                 :
-                    <SimpleGrid columns={{ base: 1, lg: 5 }} spacing='50px' py={10}>
+                    <SimpleGrid columns={{ base: 1, lg: 4 }} spacing='50px' py={10}>
                         {
                             topCoinList.map(coin => {
                                 return (
@@ -90,6 +97,9 @@ const HomePage = () => {
                 :
                     <CoinTable 
                         coinList={coinList}
+                        favoriteCoinList={favoriteCoinList}
+                        setFavoriteCoin={setFavoriteCoin}
+                        removeFavoriteCoin={removeFavoriteCoin}
                     />
             }
         </Container>
