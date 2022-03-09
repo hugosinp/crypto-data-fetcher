@@ -14,7 +14,7 @@ function CoinCard({ coin }) {
             <Box
                 role={'group'}
                 p={6}
-                maxW={'200px'}
+                maxW={'500px'}
                 w={'full'}
                 bg={useColorModeValue('white', 'gray.800')}
                 boxShadow={'lg'}
