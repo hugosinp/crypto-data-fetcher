@@ -1,4 +1,5 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import {
     Box,
     Center,
@@ -7,9 +8,14 @@ import {
     Text,
     Stack,
     Image,
+    IconButton
 } from '@chakra-ui/react';
+import { AiFillStar } from 'react-icons/ai'
 
-const CoinFavoriteCard = ({ coin }) => {
+const CoinFavoriteCard = ({ coin, setFavoriteCoin }) => {
+
+    const dispatch = useDispatch();
+
     return (
         <Center py={8}>
             <Box
@@ -68,6 +74,11 @@ const CoinFavoriteCard = ({ coin }) => {
                             ${coin.current_price.toFixed(2)}
                         </Text>
                     </Stack>
+                    <IconButton
+                        fontSize='20px'
+                        icon={<AiFillStar color='#ECC94B'/>}
+                        onClick={() => {console.log("remove"); dispatch(setFavoriteCoin(coin.symbol))}}
+                    />
                 </Stack>
             </Box>
         </Center>
