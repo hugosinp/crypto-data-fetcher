@@ -9,7 +9,14 @@ const reducer = combineReducers({
     localStorageData: localStorageReducer,
 })
 
-const initialState = {}
+const favoriteCoinsFromStorage = localStorage.getItem('favoriteCoinList') ?
+    JSON.parse(localStorage.getItem('favoriteCoinList')) : ["dummy"]
+
+const initialState = {
+    localStorageData: {
+        favoriteCoinList: favoriteCoinsFromStorage,
+    },
+}
 
 const middleware = [thunk]
 

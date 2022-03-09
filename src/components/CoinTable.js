@@ -44,13 +44,13 @@ const CoinTable = ({ coinList, favoriteCoinList, setFavoriteCoin, removeFavorite
                                             <IconButton
                                                 fontSize='20px'
                                                 icon={<AiFillStar color='#ECC94B'/>}
-                                                onClick={() => {console.log("test"); dispatch(removeFavoriteCoin(coin.symbol))}}
+                                                onClick={() => {console.log("remove"); dispatch(setFavoriteCoin(coin.symbol))}}
                                             />
                                         : 
                                             <IconButton
                                                 fontSize='20px'
                                                 icon={<AiOutlineStar />}
-                                                onClick={() => {console.log("test"); dispatch(setFavoriteCoin(coin.symbol))}}
+                                                onClick={() => {console.log("set"); dispatch(setFavoriteCoin(coin.symbol))}}
                                             />
                                     }
                                 </Td>

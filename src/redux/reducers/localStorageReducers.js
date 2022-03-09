@@ -8,24 +8,31 @@ const initialLocalStorageState = {
 
 export const localStorageReducer = (state = initialLocalStorageState, action) => {
     switch(action.type){
-        case localStorageConstantsIndex.GET_COIN_LOCAL_STORAGE_REQUEST:
+        case localStorageConstantsIndex.SET_COIN_LOCAL_STORAGE_REQUEST:
             return {
+                ...state,
                 loading: true,
-                favoriteCoinList: [], 
-                error: null
             }
 
-        case localStorageConstantsIndex.GET_COIN_LOCAL_STORAGE_SUCCESS:
-            return {
-                loading: false,
-                favoriteCoinList: action.payload,
-                error: null
-            }
+        case localStorageConstantsIndex.SET_COIN_LOCAL_STORAGE_SUCCESS:
+            const coinSymbol = action.payload
+            const existCoinSymbol = state.favoriteCoinList.find(coin => coin === coinSymbol)
+            
+            if (existCoinSymbol) {
+                return {
+                    loading: false,
+                    favoriteCoinList: state.favoriteCoinList.filter(coin => coin !== coinSymbol),
+                }
+            } else {
+                return {
+                    loading: false,
+                    favoriteCoinList: [...state.favoriteCoinList, coinSymbol],
+                }
+            }            
 
-        case localStorageConstantsIndex.GET_COIN_LOCAL_STORAGE_FAILURE:
+        case localStorageConstantsIndex.SET_COIN_LOCAL_STORAGE_FAILURE:
             return {
                 loading: false,
-                favoriteCoinList: [],
                 error: action.payload
             }
 

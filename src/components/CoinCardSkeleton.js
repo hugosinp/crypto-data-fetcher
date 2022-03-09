@@ -3,14 +3,14 @@ import {
     Box,
     SkeletonCircle, SkeletonText,
     useColorModeValue,
-    Stack
+    SimpleGrid
 } from '@chakra-ui/react';
 const CoinCardSkeleton = () => {
 
     const colorValue = useColorModeValue('white', 'gray.700');
 
     return (
-        <Stack direction={'row'} spacing='50px'>                 
+        <SimpleGrid columns={{ base: 1, lg: 4 }} spacing='50px' py={10}>                 
             <Box padding='6' boxShadow='lg' bg={colorValue} rounded={'3xl'}>
                 <SkeletonCircle size='20' />
                 <SkeletonText mt='4' noOfLines={3} spacing='4' align={'center'} />
@@ -27,11 +27,7 @@ const CoinCardSkeleton = () => {
                 <SkeletonCircle size='20' />
                 <SkeletonText mt='4' noOfLines={3} spacing='4' align={'center'} />
             </Box>
-            <Box padding='6' boxShadow='lg' bg={colorValue} rounded={'3xl'}>
-                <SkeletonCircle size='20' />
-                <SkeletonText mt='4' noOfLines={3} spacing='4' align={'center'} />
-            </Box>
-        </Stack>
+        </SimpleGrid>
     )
 }
 

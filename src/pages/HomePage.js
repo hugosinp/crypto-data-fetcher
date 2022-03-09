@@ -7,7 +7,7 @@ import {
     Stack
 } from '@chakra-ui/react';
 
-import { FcBullish } from 'react-icons/fc'
+import { GiTrophy, GiCoins } from 'react-icons/gi'
 
 import CoinCard from '../components/CoinCard'
 import CoinCardSkeleton from '../components/CoinCardSkeleton'
@@ -16,7 +16,7 @@ import CoinPerformance from '../components/CoinPerformance'
 import ErrorMessage from '../components/ErrorMessage'
 
 import { getCoinList } from '../redux/actions/coinActions'
-import { getFavoriteCoinList, setFavoriteCoin, removeFavoriteCoin } from '../redux/actions/localStorageActions'
+import { setFavoriteCoin, removeFavoriteCoin } from '../redux/actions/localStorageActions'
 
 const HomePage = () => {
     
@@ -40,8 +40,9 @@ const HomePage = () => {
 
     useEffect(() => {
         dispatch(getCoinList());
-        dispatch(getFavoriteCoinList());
     }, [dispatch])
+
+    console.log(favoriteCoinList);
 
     return (
         <Container maxWidth={'5xl'} py={34}>
@@ -54,7 +55,10 @@ const HomePage = () => {
                 <Heading align={'flex-start'}>
                     Top coins 
                 </Heading>
-                <FcBullish size={40}/>
+                <GiTrophy 
+                    color='#ECC94B'
+                    size={40}
+                />
             </Stack>
         
             {
@@ -85,7 +89,10 @@ const HomePage = () => {
                 <Heading align={'flex-start'}>
                     All coins 
                 </Heading>
-                <FcBullish size={40}/>
+                <GiCoins 
+                    color='#63B3ED'
+                    size={40}    
+                />
             </Stack>
             {
                 loading ?

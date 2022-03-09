@@ -40,29 +40,29 @@ const Header = () => {
       <Box position={'fixed'} w="100%" zIndex={2}>
           <Flex bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('gray.600', 'white')} minH={'60px'} py={{ base: 2 }} px={{ base: 5, md: 20, lg: 40 }} align={'center'}>
           
-              <Flex flex={{ base: 1, md: 'auto' }} ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>
-                  <IconButton onClick={onToggle} icon={ isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} /> } variant={'ghost'} aria-label={'Toggle Navigation'} />
-              </Flex>
+            <Flex flex={{ base: 1, md: 'auto' }} ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>
+              <IconButton onClick={onToggle} icon={ isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} /> } variant={'ghost'} aria-label={'Toggle Navigation'} />
+            </Flex>
 
-              <Flex flex={{ base: 1 }} px={{ xl: 100, }} justify={{ base: 'center', md: 'start' }} alignItems={'center'}>
-                <RouterLink to='/' _hover={{ textDecoration: 'none', }}>
-                <HStack>
-                  <FcCurrencyExchange />
-                  <Text textAlign={useBreakpointValue({ base: 'center', md: 'left' })} fontFamily={'heading'} color={useColorModeValue('gray.800', 'white')} fontWeight={'bold'}>
-                    Crypto Fetcher
-                  </Text>
-                </HStack>
-                </RouterLink>
-                <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-                <DesktopNav navItem={navItem} />
-                </Flex>
-              </Flex>
-      
-              <HStack flex={{ base: 1, md: 0 }} px={{ xl: 100, }} justify={'flex-end'} spacing={6}>
-                <Button onClick={toggleColorMode} borderRadius={'full'}  bg={useColorModeValue('gray.100', 'gray.700')}>
-                  {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-                </Button>
+            <Flex flex={{ base: 1 }} px={{ xl: 100, }} justify={{ base: 'center', md: 'start' }} alignItems={'center'}>
+              <RouterLink to='/' _hover={{ textDecoration: 'none', }}>
+              <HStack>
+                <FcCurrencyExchange />
+                <Text textAlign={useBreakpointValue({ base: 'center', md: 'left' })} fontFamily={'heading'} color={useColorModeValue('gray.800', 'white')} fontWeight={'bold'}>
+                  Crypto Fetcher
+                </Text>
               </HStack>
+              </RouterLink>
+              <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+              <DesktopNav navItem={navItem} />
+              </Flex>
+            </Flex>
+    
+            <HStack flex={{ base: 1, md: 0 }} px={{ xl: 100, }} justify={'flex-end'} spacing={6}>
+              <Button onClick={toggleColorMode} borderRadius={'full'}  bg={useColorModeValue('gray.100', 'gray.700')}>
+                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+              </Button>
+            </HStack>
 
           </Flex>
   
@@ -200,22 +200,11 @@ const MobileNavItem = ({ navItem }) => {
 const navItem = [
   {
       label: 'Home',
-      children: [
-        {
-          label: 'Job Board',
-          subLabel: 'Find your dream design job',
-          href: '#',
-        },
-        {
-          label: 'Freelance Projects',
-          subLabel: 'An exclusive list for contract work',
-          href: '#',
-        },
-      ],
+      href: '/',
   },
   {
     label: 'Favorites',
-    href: '#',
+    href: '/favorite',
   },
 ];
 export default Header;

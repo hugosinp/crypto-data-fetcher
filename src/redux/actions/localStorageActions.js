@@ -1,41 +1,17 @@
 import { localStorageConstantsIndex } from '../constants/localStorageConstants'
 
-export const getFavoriteCoinList = () => async (dispatch) => {
-    try{
-        dispatch({
-            type: localStorageConstantsIndex.GET_COIN_LOCAL_STORAGE_REQUEST
-        })
-
-        let favoriteCoinList = []
-
-        for (let a in localStorage) {
-            favoriteCoinList.push(localStorage[a])
-        }
-        
-        dispatch({
-            type: localStorageConstantsIndex.GET_COIN_LOCAL_STORAGE_SUCCESS,
-            payload: favoriteCoinList
-        })
-
-    } catch(error) {
-        dispatch({
-            type: localStorageConstantsIndex.GET_COIN_LOCAL_STORAGE_FAILURE,
-            payload: error.response
-        })
-    }
-}
-
-export const setFavoriteCoin = (coinSymbol) => async (dispatch) => {
+export const setFavoriteCoin = (coinSymbol) => async (dispatch, getState) => {
     try{
         dispatch({
             type: localStorageConstantsIndex.SET_COIN_LOCAL_STORAGE_REQUEST
         })
 
-        localStorage.setItem(coinSymbol, coinSymbol)
-
         dispatch({
             type: localStorageConstantsIndex.SET_COIN_LOCAL_STORAGE_SUCCESS,
+            payload: coinSymbol
         })
+
+        localStorage.setItem('favoriteCoinList', JSON.stringify(getState().localStorageData.favoriteCoinList))
 
     } catch(error) {
         dispatch({
@@ -45,17 +21,18 @@ export const setFavoriteCoin = (coinSymbol) => async (dispatch) => {
     }
 }
 
-export const removeFavoriteCoin = (coinSymbol) => async (dispatch) => {
+export const removeFavoriteCoin = (coinSymbol) => async (dispatch, getState) => {
     try{
         dispatch({
             type: localStorageConstantsIndex.DELETE_COIN_LOCAL_STORAGE_REQUEST
         })
 
-        localStorage.removeItem(coinSymbol)
-
         dispatch({
             type: localStorageConstantsIndex.DELETE_COIN_LOCAL_STORAGE_SUCCESS,
+            payload: coinSymbol
         })
+
+        localStorage.setItem('favoriteCoinList', JSON.stringify(getState().localStorageData.favoriteCoinList))
 
     } catch(error) {
         dispatch({
