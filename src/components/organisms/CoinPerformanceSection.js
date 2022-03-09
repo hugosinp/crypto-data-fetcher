@@ -42,6 +42,7 @@ const CoinPerformanceSection = ({ loading, gainerList, loserList }) => {
                         gainerList.map(gainer => {
                             return(
                                 <motion.div
+                                    key={gainer.symbol}
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{
                                         scale: 0.8,
@@ -55,7 +56,7 @@ const CoinPerformanceSection = ({ loading, gainerList, loserList }) => {
                                         damping: 20
                                     }}
                                 >
-                                    <Stack direction={'row'} py={2} justify={'space-between'} key={gainer.symbol}>
+                                    <Stack direction={'row'} py={2} justify={'space-between'} >
                                         <Stack direction={'row'}>
                                             <Image
                                                 boxSize='25px'
@@ -108,6 +109,7 @@ const CoinPerformanceSection = ({ loading, gainerList, loserList }) => {
                         loserList.map(loser => {
                             return(
                                 <motion.div
+                                    key={loser.symbol}
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{
                                         scale: 0.8,
@@ -121,7 +123,7 @@ const CoinPerformanceSection = ({ loading, gainerList, loserList }) => {
                                         damping: 20
                                     }}
                                 >
-                                    <Stack direction={'row'} py={2} justify={'space-between'} key={loser.symbol}>
+                                    <Stack direction={'row'} py={2} justify={'space-between'}>
                                         <Stack direction={'row'}>
                                             <Image
                                                 boxSize='25px'
