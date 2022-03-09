@@ -11,7 +11,7 @@ import CoinCardSkeleton from '../molecules/CoinCardSkeleton'
 
 const TopCoinSection = ({ loading, topCoinList, error  }) => {
     return (
-        <Stack direction={'column'}>
+        <Stack direction={'column'} py={5}>
             <Stack direction={'row'} spacing={4}>
                 <Heading align={'flex-start'}>
                     Top coins 

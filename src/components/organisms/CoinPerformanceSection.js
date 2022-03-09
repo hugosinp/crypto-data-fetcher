@@ -13,7 +13,7 @@ import { IoMdArrowDropup, IoMdArrowDropdown } from 'react-icons/io'
 
 const CoinPerformanceSection = ({ loading, gainerList, loserList }) => {
     return (
-        <Stack direction={'row'} spacing={4} py={10}>
+        <Stack direction={'row'} spacing={4} py={10} overflow={'auto'}>
             <Box
                 p={6}
                 maxW={'500px'}
