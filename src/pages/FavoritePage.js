@@ -29,7 +29,7 @@ const FavoritePage = () => {
     }, [dispatch])
 
     return (
-        <Container maxWidth={'5xl'} py={34}>
+        <Container maxWidth={'5xl'} py={20}>
             <FavoriteSection
                 loading={loading}
                 coinList={coinList}
