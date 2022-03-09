@@ -16,12 +16,12 @@ import {
 
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 
-const CoinTable = ({ coinList, favoriteCoinList, setFavoriteCoin, removeFavoriteCoin }) => {
+const CoinTable = ({ coinList, favoriteCoinList, setFavoriteCoin }) => {
     
     const dispatch = useDispatch();
 
     return (
-        <Table variant='simple'>
+        <Table variant='simple' py={10}>
             <Thead>
                 <Tr>
                     <Th></Th>
@@ -71,7 +71,7 @@ const CoinTable = ({ coinList, favoriteCoinList, setFavoriteCoin, removeFavorite
                                     </Stack>
 
                                 </Td>
-                                <Td isNumeric>${coin.current_price}</Td>
+                                <Td isNumeric>${coin.current_price.toFixed(3)}</Td>
                                 {
                                     coin.price_change_percentage_24h < 0 ?
                                         <Td color={'red.500'}  isNumeric>{coin.price_change_percentage_24h.toFixed(2)}%</Td>

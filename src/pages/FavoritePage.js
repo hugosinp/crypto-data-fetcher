@@ -4,14 +4,16 @@ import {
     Container,
     Heading,
     Stack,
-    Text,
-    IconButton
+    IconButton,
+    SimpleGrid
 } from '@chakra-ui/react';
 
 import { AiFillStar } from 'react-icons/ai'
 
 import { getCoinList } from '../redux/actions/coinActions'
 import { setFavoriteCoin } from '../redux/actions/localStorageActions'
+
+import CoinFavoriteCard from '../components/molecules/CoinFavoriteCard'
 
 const FavoritePage = () => {
 
@@ -34,26 +36,35 @@ const FavoritePage = () => {
 
     return (
         <Container maxWidth={'5xl'} py={40}>
-            <Heading>
-                Favorite Coins
-            </Heading>
             <Stack direction={'row'}>
+                <Heading>
+                    Favorite Coins
+                </Heading>
+                <AiFillStar 
+                    color='#ECC94B'
+                    size={40}
+                />
+            </Stack>
+
+            <SimpleGrid columns={{ base: 1, lg: 4 }} spacing='50px' py={10}>
                 {
                     coinList.map(coin => {
                         return(
                             favoriteCoinList.find(favorite => favorite === coin.symbol) &&
-                                <Stack direction={'row'}>
+                                <Stack key={coin.symbol}>
                                     <IconButton
                                         fontSize='20px'
                                         icon={<AiFillStar color='#ECC94B'/>}
-                                        onClick={() => {console.log("test"); dispatch(setFavoriteCoin(coin.symbol))}}
+                                        onClick={() => {console.log("remove"); dispatch(setFavoriteCoin(coin.symbol))}}
                                     />
-                                    <Text>{coin.symbol}</Text>
+                                    <CoinFavoriteCard 
+                                        coin={coin}
+                                    />
                                 </Stack>
                         )
                     })
                 }
-            </Stack>
+            </SimpleGrid>
         </Container>
     )
 }
