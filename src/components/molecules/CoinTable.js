@@ -38,6 +38,7 @@ const CoinTable = ({ coinList, favoriteCoinList, setFavoriteCoin }) => {
                     {
                         coinList.map(coin => {
                             return(
+                                
                                 <Tr key={coin.name}>
 
                                     <Td>
@@ -46,13 +47,13 @@ const CoinTable = ({ coinList, favoriteCoinList, setFavoriteCoin }) => {
                                                 <IconButton
                                                     fontSize='20px'
                                                     icon={<AiFillStar color='#ECC94B'/>}
-                                                    onClick={() => {console.log("remove"); dispatch(setFavoriteCoin(coin.symbol))}}
+                                                    onClick={() => {dispatch(setFavoriteCoin(coin.symbol))}}
                                                 />
                                             : 
                                                 <IconButton
                                                     fontSize='20px'
                                                     icon={<AiOutlineStar />}
-                                                    onClick={() => {console.log("set"); dispatch(setFavoriteCoin(coin.symbol))}}
+                                                    onClick={() => {dispatch(setFavoriteCoin(coin.symbol))}}
                                                 />
                                         }
                                     </Td>

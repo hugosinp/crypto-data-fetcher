@@ -8,7 +8,7 @@ import {
 import { GiCoins } from 'react-icons/gi'
 
 import CoinTable from '../molecules/CoinTable'
-import ErrorMessage from '../ErrorMessage'
+import ErrorMessage from '../molecules/ErrorMessage'
 
 const AllCoinSection = ({ loading, coinList, favoriteCoinList, setFavoriteCoin, error }) => {
     return (

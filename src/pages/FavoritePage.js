@@ -15,13 +15,12 @@ const FavoritePage = () => {
     const localStorageData = useSelector(state => state.localStorageData);
 
     const {
+        loading,
         coinList,
     } = coinListData;
 
     const {
-        loading,
         favoriteCoinList,
-        error
     } = localStorageData;
 
     useEffect(() => {
@@ -29,13 +28,12 @@ const FavoritePage = () => {
     }, [dispatch])
 
     return (
-        <Container maxWidth={'5xl'} py={34}>
+        <Container maxWidth={'6xl'} py={20}>
             <FavoriteSection
                 loading={loading}
                 coinList={coinList}
                 favoriteCoinList={favoriteCoinList}
                 setFavoriteCoin={setFavoriteCoin}
-                error={error}
             />
         </Container>
     )

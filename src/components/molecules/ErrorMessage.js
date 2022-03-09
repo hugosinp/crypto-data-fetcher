@@ -2,8 +2,6 @@ import { Box, Heading, Text } from '@chakra-ui/react';
 
 const ErrorMessage = (error) => {
 
-  console.log(error.error);
-
   return (
     <Box textAlign="center" height={'100vh'} py={10} px={6}>
       <Heading

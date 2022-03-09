@@ -38,6 +38,7 @@ const HomePage = () => {
                 loading={loading}
                 gainerList={gainerList}
                 loserList={loserList}
+                error={error}
             />
 
             <TopCoinSection
