@@ -38,6 +38,7 @@ const CoinTable = ({ coinList, favoriteCoinList, setFavoriteCoin }) => {
                     {
                         coinList.map(coin => {
                             return(
+                                
                                 <Tr key={coin.name}>
 
                                     <Td>
